@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #06be712c, #052716);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .calculator {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .calculator h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input[type="number"]:focus {
+      border-color: #2193b0;
+    }
+
+    button {
+      background-color: #2193b0;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1b7a99;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>Grade Calculator</h2>
+    <input type="number" id="score" placeholder="Enter your score (0 - 100)" min="0" max="100" />
+    <button onclick="calculateGrade()">Calculate Grade</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateGrade() {
+      const score = parseFloat(document.getElementById('score').value);
+      let grade = "";
+
+      if (isNaN(score) || score < 0 || score > 100) {
+        grade = "⚠️ Please enter a valid score between 0 and 100.";
+      } else if (score >= 90) {
+        grade = "🎉 Your Grade: A";
+      } else if (score >= 80) {
+        grade = "👍 Your Grade: B";
+      } else if (score >= 70) {
+        grade = "🙂 Your Grade: C";
+      } else if (score >= 60) {
+        grade = "😐 Your Grade: D";
+      } else {
+        grade = "❌ Your Grade: F";
+      }
+
+      document.getElementById('result').textContent = grade;
+    }
+  </script>
+
+</body>
+</html>
